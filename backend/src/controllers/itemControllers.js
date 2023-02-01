@@ -1,85 +1,94 @@
-const models = require("../models");
+const { PrismaClient } = require("@prisma/client");
 
-const browse = (req, res) => {
-  models.item
-    .findAll()
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+const prisma = new PrismaClient();
+
+const browse = async (req, res) => {
+  try {
+    const items = await prisma.item.findMany();
+    res.json(items);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
-const read = (req, res) => {
-  models.item
-    .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
+const read = async (req, res) => {
+  try {
+    const item = await prisma.item.findUnique({
+      where: {
+        id: parseInt(req.params.id, 10),
+      },
     });
+    if (item) {
+      res.json(item);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
-const edit = (req, res) => {
+const edit = async (req, res) => {
   const item = req.body;
 
   // TODO validations (length, format...)
 
-  item.id = parseInt(req.params.id, 10);
-
-  models.item
-    .update(item)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
+  try {
+    const result = await prisma.item.update({
+      where: {
+        id: parseInt(req.params.id, 10),
+      },
+      data: item,
     });
+    if (result) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
-const add = (req, res) => {
+const add = async (req, res) => {
   const item = req.body;
 
   // TODO validations (length, format...)
 
-  models.item
-    .insert(item)
-    .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
+  try {
+    const result = await prisma.item.create({
+      data: item,
     });
+    if (result) {
+      res.sendStatus(201);
+    } else {
+      res.sendStatus(500);
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
-const destroy = (req, res) => {
-  models.item
-    .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
+const destroy = async (req, res) => {
+  try {
+    const result = await prisma.item.delete({
+      where: {
+        id: parseInt(req.params.id, 10),
+      },
     });
+    if (result) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
 module.exports = {
