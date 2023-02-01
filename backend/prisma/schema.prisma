@@ -11,3 +11,46 @@ model item {
   id    Int    @id @default(autoincrement()) @db.UnsignedInt
   title String @db.VarChar(255)
 }
+
+model Profil {
+  id    Int    @id @default(autoincrement()) @db.UnsignedInt
+  description String @db.Text
+  image_url String @db.VarChar(255)
+  github_link String @db.VarChar(255)
+  linkedin_link String @db.VarChar(255)
+}
+
+model Project {
+  id    Int    @id @default(autoincrement()) @db.UnsignedInt
+  title String @db.VarChar(255)
+  description String @db.Text
+  image_url String @db.VarChar(255)
+  tags  ProjectTag[]
+}
+model Tag {
+  id    Int    @id @default(autoincrement()) @db.UnsignedInt
+  name String @db.VarChar(255)
+  projects ProjectTag[]
+}
+
+model ProjectTag {
+  id    Int    @id @default(autoincrement()) @db.UnsignedInt
+  project_id Int @db.UnsignedInt
+  tag_id Int @db.UnsignedInt
+  project Project @relation(fields: [project_id], references: [id])
+  tag Tag @relation(fields: [tag_id], references: [id])
+}
+
+model Post {
+  id    Int    @id @default(autoincrement()) @db.UnsignedInt
+  title String @db.VarChar(255)
+  created_at DateTime @db.DateTime @default(now())
+  content String @db.Text
+  image_url String @db.VarChar(255)
+}
+
+model Admin {
+  id    Int    @id @default(autoincrement()) @db.UnsignedInt
+  email String @db.VarChar(255)
+  hashed_password String @db.VarChar(255)
+}
