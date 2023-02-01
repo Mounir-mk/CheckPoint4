@@ -44,7 +44,7 @@ model ProjectTag {
 model Post {
   id    Int    @id @default(autoincrement()) @db.UnsignedInt
   title String @db.VarChar(255)
-  created_at DateTime @db.DateTime @default(now())
+  created_at DateTime  @default(dbgenerated("(curdate())")) @db.Date
   content String @db.Text
   image_url String @db.VarChar(255)
 }
