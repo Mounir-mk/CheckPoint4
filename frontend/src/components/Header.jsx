@@ -1,17 +1,20 @@
+import { NavLink } from "react-router-dom";
+
 function Header() {
   return (
     <header className="w-full flex justify-between px-3 py-6 border-b-2 border-slate-400">
-      <div className="h-6 w-6 bg-black rounded-full" />
+      <NavLink to="/" className="h-6 w-6 bg-black rounded-full" />
       <nav>
         <ul className="flex gap-4">
           <li>
-            <a to="/">Home</a>
+            <NavLink className="text-xl font-bold" to="/posts">
+              Blog
+            </NavLink>
           </li>
           <li>
-            <a to="/about">About</a>
-          </li>
-          <li>
-            <a to="/contact">Contact</a>
+            <NavLink className="text-xl font-bold" to="/contact">
+              Contact
+            </NavLink>
           </li>
         </ul>
       </nav>

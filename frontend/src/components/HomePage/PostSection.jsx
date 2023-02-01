@@ -11,7 +11,7 @@ sit amet.`;
         <h1 className="text-2xl font-bold">Récents Posts</h1>
         <h2>Voir Tous les Postes</h2>
       </div>
-      <div className="w-full flex gap-8">
+      <div className="w-full grid grid-cols-3 gap-8">
         <PostCard text={text} />
         <PostCard text={text} />
         <PostCard text={text} />
