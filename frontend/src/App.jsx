@@ -1,13 +1,6 @@
-import Home from "./pages/Home";
-
-import "./App.css";
-
 function App() {
   return (
-    <div className="App">
-      <Home />
-      <p>coucou</p>
-    </div>
+    <h1 className="text-3xl font-bold text-red-300 underline">Hello world!</h1>
   );
 }
 
