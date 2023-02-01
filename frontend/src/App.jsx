@@ -1,6 +1,19 @@
+import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+import Footer from "./components/Footer";
+
 function App() {
   return (
-    <h1 className="text-3xl font-bold text-red-300 underline">Hello world!</h1>
+    <div className="min-h-screen bg-slate-900">
+      <div
+        id="container"
+        className="mx-auto max-w-screen-lg h-full text-white flex flex-col gap-6"
+      >
+        <Header />
+        <HomePage />
+        <Footer />
+      </div>
+    </div>
   );
 }
 
