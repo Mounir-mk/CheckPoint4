@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function WrappingContainer({ children }) {
   return (
@@ -7,7 +9,9 @@ function WrappingContainer({ children }) {
         id="container"
         className="mx-auto max-w-screen-lg h-full text-white flex flex-col gap-6"
       >
+        <Header />
         {children}
+        <Footer />
       </div>
     </div>
   );
