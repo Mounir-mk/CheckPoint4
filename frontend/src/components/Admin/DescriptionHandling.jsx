@@ -25,7 +25,7 @@ function DescriptionHandling() {
     console.warn(data.avatar);
   };
   return (
-    <section id="description" className="ml-64 w-[calc(100%-16rem)]">
+    <section id="description" className="flex-grow">
       <div className="text-slate-200 mx-16">
         <h1 className="text-4xl my-10 pb-8 border-b-2 border-slate-200 font-bold">
           Editer la description
