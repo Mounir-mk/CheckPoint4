@@ -1,16 +1,30 @@
 const { PrismaClient } = require("@prisma/client");
 
-const { items } = require("./data");
+const { profile, projectTags, projects, posts, tags } = require("./data");
 
 const prisma = new PrismaClient();
 
 async function main() {
   // Create items
-  await prisma.item.createMany({
-    data: items,
+  await prisma.profil.create({
+    data: profile,
   });
 
-  console.warn("Seeding complete!");
+  await prisma.project.createMany({
+    data: projects,
+  });
+
+  await prisma.tag.createMany({
+    data: tags,
+  });
+
+  await prisma.projectTag.createMany({
+    data: projectTags,
+  });
+
+  await prisma.post.createMany({
+    data: posts,
+  });
 }
 main()
   .then(async () => {

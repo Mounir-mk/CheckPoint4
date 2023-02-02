@@ -1,6 +1,8 @@
-import React from "react";
+import { useState } from "react";
 
 function PostsHandling() {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const array = new Array(100).fill(0);
   return (
     <section id="description" className="flex-grow h-screen">
@@ -41,6 +43,7 @@ function PostsHandling() {
                     <button
                       type="button"
                       className="bg-blue-500 text-slate-200 px-4 py-2 rounded-full hover:bg-blue-600"
+                      onClick={() => setIsEditModalOpen(true)}
                     >
                       Editer
                     </button>
@@ -60,9 +63,82 @@ function PostsHandling() {
           <button
             type="button"
             className="bg-blue-500 text-slate-200 px-4 py-2 rounded-full my-8 hover:bg-blue-600 mx-auto"
+            onClick={() => setIsAddModalOpen(true)}
           >
             Ajouter un post
           </button>
+          {isAddModalOpen && (
+            <div className="absolute top-0 left-0 w-full h-full bg-slate-600 bg-opacity-60 flex items-center justify-center">
+              <div className="bg-slate-800 rounded-lg shadow flex flex-col items-center justify-center p-4 text-slate-200">
+                <h1 className="text-3xl font-bold pb-10">
+                  Ajouter un nouveau post
+                </h1>
+                <form className="flex flex-col items-center justify-center w-full p-6 gap-2">
+                  <label htmlFor="description" className="text-xl font-bold">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    cols="50"
+                    rows="15"
+                    defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus malesuada nisi tellus, non imperdiet nisi tempor at. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+                    className="bg-slate-900 text-slate-200 p-4 rounded max-w-prose"
+                  />
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      className="bg-red-600 text-white font-bold p-2 mt-16 px-4 rounded"
+                      onClick={() => setIsAddModalOpen(false)}
+                    >
+                      Annuler
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-blue-600 text-white font-bold p-2 mt-16 px-4 rounded"
+                    >
+                      Modifier
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+          {isEditModalOpen && (
+            <div className="absolute z-50 top-0 left-0 w-full h-full bg-slate-600 bg-opacity-60 flex items-center justify-center">
+              <div className="bg-slate-800 rounded-lg shadow flex flex-col items-center justify-center p-4 text-slate-200">
+                <h1 className="text-3xl font-bold pb-10">Editer le post</h1>
+                <form className="flex flex-col items-center justify-center w-full p-6 gap-2">
+                  <label htmlFor="description" className="text-xl font-bold">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    cols="50"
+                    rows="15"
+                    defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus malesuada nisi tellus, non imperdiet nisi tempor at. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+                    className="bg-slate-900 text-slate-200 p-4 rounded max-w-prose"
+                  />
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      className="bg-red-600 text-white font-bold p-2 mt-16 px-4 rounded"
+                      onClick={() => setIsEditModalOpen(false)}
+                    >
+                      Annuler
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-blue-600 text-white font-bold p-2 mt-16 px-4 rounded"
+                    >
+                      Modifier
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
