@@ -1,0 +1,27 @@
+GET http://localhost:5000/posts
+
+###
+GET http://localhost:5000/posts/51
+
+###
+POST http://localhost:5000/posts
+Content-Type: application/json
+
+{
+      "title": "My new Post",
+      "content": "This is my new Post",
+      "image_url": "https://picsum.photos/200/300"
+}
+
+###
+PUT http://localhost:5000/posts/51
+Content-Type: application/json
+
+{
+      "title": "My new Post edited",
+      "content": "This is my new Post edited",
+      "image_url": "https://picsum.photos/200/500"
+}
+
+###
+DELETE http://localhost:5000/posts/51

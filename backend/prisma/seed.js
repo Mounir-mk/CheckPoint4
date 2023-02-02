@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Create items
-  await prisma.profil.create({
+  await prisma.profile.create({
     data: profile,
   });
 
