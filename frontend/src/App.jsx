@@ -5,6 +5,7 @@ import PostPage from "./pages/PostPage";
 import Admin from "./pages/Admin";
 import AdminDescription from "./pages/AdminDescription";
 import AdminPosts from "./pages/AdminPosts";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/description" element={<AdminDescription />} />
       <Route path="/admin/posts" element={<AdminPosts />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
     </Routes>
   );
 }
