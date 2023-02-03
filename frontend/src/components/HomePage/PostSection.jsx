@@ -1,10 +1,7 @@
+import PropTypes from "prop-types";
 import PostCard from "./PostCard";
 
-function PostSection() {
-  const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-malesuada nisi tellus, non imperdiet nisi tempor at. Lorem ipsum dolor
-sit amet.`;
-
+function PostSection({ posts }) {
   return (
     <section id="posts" className="w-full">
       <div className="flex justify-between items-center mb-8">
@@ -12,12 +9,27 @@ sit amet.`;
         <h2>Voir Tous les Postes</h2>
       </div>
       <div className="w-full grid grid-cols-3 gap-8">
-        <PostCard text={text} />
-        <PostCard text={text} />
-        <PostCard text={text} />
+        {posts
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+          .slice(0, 3)
+          .map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
       </div>
     </section>
   );
 }
+
+PostSection.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      created_at: PropTypes.string,
+      content: PropTypes.string,
+      image_url: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 export default PostSection;

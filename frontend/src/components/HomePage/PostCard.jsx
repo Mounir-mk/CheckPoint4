@@ -1,21 +1,22 @@
 import PropTypes from "prop-types";
-import avatar from "../../assets/avatar.png";
 
-function PostCard({ text }) {
+function PostCard({ post }) {
   return (
     <article className="flex flex-col w-full bg-slate-800 items-center h-96 rounded-xl">
       <img
         className="h-1/2 w-full object-cover rounded-t-xl"
-        src={avatar}
+        src={post.image_url}
         alt="avatar"
       />
       <div className="flex flex-col gap-2 items-center py-4">
-        <h3 className="text-xl font-bold">Post 1</h3>
+        <h3 className="text-xl font-bold">{post.title}</h3>
         <h4 className="text-sm text-slate-500 italic">
-          Lorem ipsum dolor sit amet
+          {post.created_at.slice(0, 10)}
         </h4>
         <p className="text-base text-center overflow-hidden pb-4">
-          {text.length > 100 ? `${text.slice(0, 120)}...` : text}
+          {post.content.length > 100
+            ? `${post.content.slice(0, 120)}...`
+            : post.content}
         </p>
       </div>
     </article>
@@ -23,7 +24,13 @@ function PostCard({ text }) {
 }
 
 PostCard.propTypes = {
-  text: PropTypes.string.isRequired,
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    created_at: PropTypes.string,
+    content: PropTypes.string,
+    image_url: PropTypes.string,
+  }).isRequired,
 };
 
 export default PostCard;

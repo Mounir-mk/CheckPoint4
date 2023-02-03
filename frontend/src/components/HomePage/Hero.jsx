@@ -1,25 +1,38 @@
-import avatar from "../../assets/avatar.png";
+import PropTypes from "prop-types";
+import github from "../../assets/github.png";
+import linkedin from "../../assets/linkedin.png";
 
-function Hero() {
+function Hero({ profile }) {
   return (
     <section id="hero" className="flex justify-between">
       <article className="flex flex-col gap-6 justify-between py-4">
         <h1 className="text-3xl font-bold">Hello, I'm Mounir</h1>
-        <p className="text-lg max-w-prose">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-          malesuada nisi tellus, non imperdiet nisi tempor at. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore.
-        </p>
+        <p className="text-lg max-w-prose">{profile.description}</p>
         <div id="socials" className="flex gap-4">
-          <div className="h-6 w-6 bg-black rounded-full" />
-          <div className="h-6 w-6 bg-black rounded-full" />
-          <div className="h-6 w-6 bg-black rounded-full" />
+          <a href={profile.github_link} target="_blank" rel="noreferrer">
+            <img className="w-8 h-8" src={github} alt="github" />
+          </a>
+          <a href={profile.linkedin_link} target="_blank" rel="noreferrer">
+            <img className="w-8 h-8" src={linkedin} alt="github" />
+          </a>
         </div>
       </article>
-      <img className="h-80 rounded-3xl" src={avatar} alt="avatar" />
+      <img
+        className="h-80 rounded-full"
+        src={`${import.meta.env.VITE_BACKEND_URL}/profilepic.png`}
+        alt="avatar"
+      />
     </section>
   );
 }
+
+Hero.propTypes = {
+  profile: PropTypes.shape({
+    description: PropTypes.string,
+    image_url: PropTypes.string,
+    github_link: PropTypes.string,
+    linkedin_link: PropTypes.string,
+  }).isRequired,
+};
 
 export default Hero;
