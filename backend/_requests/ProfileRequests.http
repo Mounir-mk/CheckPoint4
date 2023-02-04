@@ -1,9 +1,0 @@
-GET  http://localhost:5000/profile
-
-###
-PUT http://localhost:5000/profile
-Content-Type: application/json
-
-{
-    "description" : "I am a developer"
-}

@@ -3,11 +3,16 @@ import TagList from "./TagList";
 
 function Project({ project }) {
   return (
-    <article className="flex flex-col gap-6 justify-between py-4">
-      <div className="flex bg-slate-800 rounded-xl p-3 gap-8">
+    <a
+      href={project.github_link}
+      target="_blank"
+      rel="noreferrer"
+      className="flex flex-col gap-6 justify-between py-4"
+    >
+      <div className="flex bg-slate-800 rounded-xl p-5 gap-8 items-center">
         <img
-          className="h-36 rounded-3xl"
-          src={project.image_url}
+          className="h-36 w-36 rounded-3xl"
+          src={`${import.meta.env.VITE_BACKEND_ASSETS}/${project.thumbnail}`}
           alt="avatar"
         />
         <div>
@@ -18,17 +23,18 @@ function Project({ project }) {
           <p className="text-base max-w-prose mt-4">{project.description}</p>
         </div>
       </div>
-    </article>
+    </a>
   );
 }
 
 Project.propTypes = {
   project: PropTypes.shape({
     id: PropTypes.number,
+    github_link: PropTypes.string,
     title: PropTypes.string,
     created_at: PropTypes.string,
     description: PropTypes.string,
-    image_url: PropTypes.string,
+    thumbnail: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

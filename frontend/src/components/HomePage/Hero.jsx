@@ -19,7 +19,7 @@ function Hero({ profile }) {
       </article>
       <img
         className="h-80 rounded-full"
-        src={`${import.meta.env.VITE_BACKEND_URL}/profilepic.png`}
+        src={`${import.meta.env.VITE_BACKEND_ASSETS}/${profile.image_url}`}
         alt="avatar"
       />
     </section>

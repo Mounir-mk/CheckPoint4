@@ -1,0 +1,5 @@
+# GET Profile
+GET http://localhost:8055/items/profile
+###
+# GET Projects with their tags
+GET http://localhost:8055/items/project?fields=*,tag.tag_id.name
