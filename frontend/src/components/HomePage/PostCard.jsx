@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 function PostCard({ post }) {
   return (
-    <article className="flex flex-col w-full bg-slate-800 items-center h-96 rounded-xl">
+    <NavLink
+      to={`/posts/${post.id}`}
+      className="flex flex-col w-full bg-slate-800 items-center h-96 rounded-xl"
+    >
       <img
         className="h-1/2 w-full object-cover rounded-t-xl"
         src={`${import.meta.env.VITE_BACKEND_ASSETS}/${post.thumbnail}`}
@@ -19,7 +23,7 @@ function PostCard({ post }) {
             : post.description}
         </p>
       </div>
-    </article>
+    </NavLink>
   );
 }
 

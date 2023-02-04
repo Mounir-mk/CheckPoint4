@@ -6,7 +6,7 @@ function Hero({ profile }) {
   return (
     <section id="hero" className="flex justify-between">
       <article className="flex flex-col gap-6 justify-between py-4">
-        <h1 className="text-3xl font-bold">Hello, I'm Mounir</h1>
+        <h1 className="text-3xl font-bold">Salut à tous, moi c'est Mounir</h1>
         <p className="text-lg max-w-prose">{profile.description}</p>
         <div id="socials" className="flex gap-4">
           <a href={profile.github_link} target="_blank" rel="noreferrer">

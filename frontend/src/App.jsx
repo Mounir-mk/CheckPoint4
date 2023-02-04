@@ -3,6 +3,7 @@ import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import WrappingContainer from "./services/WrappingContainer";
 import HomePage from "./pages/HomePage";
+import BlogPage from "./pages/BlogPage";
 import PostPage from "./pages/PostPage";
 import Loader from "./components/Loader";
 
@@ -43,7 +44,11 @@ function App() {
 
   const getPosts = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/post`);
+      const res = await axios.get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/post?fields=id,date_created,title,thumbnail,description`
+      );
       setPosts(res.data.data);
     } catch (error) {
       console.error(error);
@@ -74,7 +79,15 @@ function App() {
         path="/posts"
         element={
           <WrappingContainer>
-            <PostPage posts={posts} />
+            <BlogPage posts={posts} />
+          </WrappingContainer>
+        }
+      />
+      <Route
+        path="/posts/:postId"
+        element={
+          <WrappingContainer>
+            <PostPage />
           </WrappingContainer>
         }
       />

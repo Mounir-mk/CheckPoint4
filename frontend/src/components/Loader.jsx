@@ -1,10 +1,10 @@
 function Loader() {
   return (
-    <main className="h-screen w-screen flex flex-col items-center justify-center">
+    <main className="fixed top-0 left-0 w-screen h-screen bg-slate-900 flex flex-col items-center justify-center">
       <div role="status">
         <svg
           aria-hidden="true"
-          className="inline w-16 h-16 mr-2 text-slate-800 animate-spin dark:text-slate-800 fill-cerise-dark"
+          className="inline w-16 h-16 mr-2 text-slate-600 animate-spin dark:text-slate-800 fill-blue-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ function Loader() {
           />
         </svg>
       </div>
-      <h1 className="text-xl font-bold text-slate-800">Loading...</h1>
+      <h1 className="text-xl font-bold text-slate-200">Loading...</h1>
     </main>
   );
 }

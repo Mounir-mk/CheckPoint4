@@ -10,7 +10,7 @@ function PostSection({ posts }) {
       </div>
       <div className="w-full grid grid-cols-3 gap-8">
         {posts
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+          .sort((a, b) => new Date(b.date_created) - new Date(a.date_created))
           .slice(0, 3)
           .map((post) => (
             <PostCard key={post.id} post={post} />
