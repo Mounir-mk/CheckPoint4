@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import WrappingContainer from "./services/WrappingContainer";
 import HomePage from "./pages/HomePage";
 import BlogPage from "./pages/BlogPage";
 import PostPage from "./pages/PostPage";
 import Loader from "./components/Loader";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -66,32 +68,54 @@ function App() {
     return <Loader />;
   }
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <WrappingContainer>
-            <HomePage profile={profile} projects={projects} posts={posts} />
-          </WrappingContainer>
-        }
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <WrappingContainer>
+              <HomePage profile={profile} projects={projects} posts={posts} />
+            </WrappingContainer>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <WrappingContainer>
+              <BlogPage posts={posts} />
+            </WrappingContainer>
+          }
+        />
+        <Route
+          path="/posts/:postId"
+          element={
+            <WrappingContainer>
+              <PostPage />
+            </WrappingContainer>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <WrappingContainer>
+              <ContactPage />
+            </WrappingContainer>
+          }
+        />
+      </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
       />
-      <Route
-        path="/posts"
-        element={
-          <WrappingContainer>
-            <BlogPage posts={posts} />
-          </WrappingContainer>
-        }
-      />
-      <Route
-        path="/posts/:postId"
-        element={
-          <WrappingContainer>
-            <PostPage />
-          </WrappingContainer>
-        }
-      />
-    </Routes>
+    </>
   );
 }
 
