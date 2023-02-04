@@ -1,12 +1,18 @@
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import PostCard from "./PostCard";
 
 function PostSection({ posts }) {
   return (
     <section id="posts" className="w-full">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl font-bold">Récents Posts</h1>
-        <h2>Voir Tous les Postes</h2>
+        <h1 className="text-2xl font-semibold">Articles Récents</h1>
+        <NavLink
+          to="/posts"
+          className="font-thin hover:text-blue-600 cursor-pointer transition duration-300 ease-in-out"
+        >
+          Voir Tous les Postes
+        </NavLink>
       </div>
       <div className="w-full grid grid-cols-3 gap-8">
         {posts

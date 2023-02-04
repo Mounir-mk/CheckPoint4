@@ -7,7 +7,7 @@ function Project({ project }) {
       href={project.github_link}
       target="_blank"
       rel="noreferrer"
-      className="flex flex-col gap-6 justify-between py-4"
+      className="flex flex-col gap-6 justify-between py-4 hover:animate-pulse hover:shadow-2xl transition duration-300 ease-in-out"
     >
       <div className="flex bg-slate-800 rounded-xl p-5 gap-8 items-center">
         <img

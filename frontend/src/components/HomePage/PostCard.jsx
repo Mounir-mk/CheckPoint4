@@ -5,7 +5,7 @@ function PostCard({ post }) {
   return (
     <NavLink
       to={`/posts/${post.id}`}
-      className="flex flex-col w-full bg-slate-800 items-center h-96 rounded-xl"
+      className="flex flex-col w-full bg-slate-800 items-center h-96 rounded-xl hover:animate-pulse hover:shadow-2xl transition duration-300 ease-in-out"
     >
       <img
         className="h-1/2 w-full object-cover rounded-t-xl"
