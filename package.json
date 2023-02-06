@@ -1,0 +1,19 @@
+{
+  "name": "template-fullstack",
+  "version": "1.0.0",
+  "description": "project template for the React-Express-MySQL cursus in Wild Code School",
+  "scripts": {
+    "setup": "npm i && husky install && npm --prefix ./frontend i && npm --prefix ./directus i",
+    "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"cd directus/ && npx directus start\"",
+    "dev-front": "npm --prefix ./frontend run dev",
+    "lint": "npm --prefix ./frontend run lint",
+    "fix": "npm --prefix ./frontend run fix"
+  },
+  "keywords": [],
+  "author": "Wild Code School",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "husky": "^7.0.0"
+  }
+}
