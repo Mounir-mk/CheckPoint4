@@ -5,11 +5,11 @@ import PostSection from "../components/HomePage/PostSection";
 
 function HomePage({ profile, projects, posts }) {
   return (
-    <>
+    <div className="flex-1 overflow-y-auto">
       <Hero profile={profile} />
       <ProjectSection projects={projects} />
       <PostSection posts={posts} />
-    </>
+    </div>
   );
 }
 

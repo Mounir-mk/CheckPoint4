@@ -4,7 +4,7 @@ import Tag from "./Tag";
 
 function TagList({ tags }) {
   return (
-    <section id="tags" className="flex gap-2">
+    <section id="tags" className="flex flex-wrap gap-2">
       {tags.map((tag) => (
         <Tag key={tag} tag={tag} />
       ))}

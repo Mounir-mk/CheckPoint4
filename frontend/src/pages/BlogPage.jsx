@@ -4,7 +4,7 @@ import PostCard from "../components/HomePage/PostCard";
 
 function BlogPage({ posts }) {
   return (
-    <div id="container" className="my-6">
+    <div id="container" className="my-6 flex-1 overflow-y-auto">
       <section id="post-page-title" className="px-3 pb-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold">
@@ -15,7 +15,10 @@ function BlogPage({ posts }) {
           </div>
         </div>
       </section>
-      <section id="post-page-content" className="grid grid-cols-3 gap-8">
+      <section
+        id="post-page-content"
+        className="grid grid-rows-3 md:grid-cols-3 grid-flow-row gap-8"
+      >
         {posts
           .sort((a, b) => new Date(b.date_created) - new Date(a.date_created))
           .slice(0, 12)

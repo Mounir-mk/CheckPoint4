@@ -34,7 +34,7 @@ function PostPage() {
   return (
     <section
       id="post-page"
-      className="flex flex-col items-center gap-6 px-4 my-6"
+      className="flex-1 overflow-y-auto flex flex-col items-center gap-6 px-4 my-6"
     >
       <h1 className="text-3xl font-bold">{title}</h1>
       <h2 className="text-sm text-slate-500 italic">

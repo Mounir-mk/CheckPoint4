@@ -3,7 +3,7 @@ import Project from "./Project";
 
 function ProjectSection({ projects }) {
   return (
-    <section id="projects">
+    <section id="projects" className="my-6">
       <h2 className="text-2xl font-semibold">Projets Récents</h2>
       {projects.map((project) => (
         <Project key={project.id} project={project} />

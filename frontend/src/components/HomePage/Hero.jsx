@@ -6,9 +6,9 @@ function Hero({ profile }) {
   return (
     <section
       id="hero"
-      className="flex justify-between pb-8 border-b-2 border-slate-400"
+      className="md:flex justify-between pb-8 border-b-2 border-slate-400 my-6"
     >
-      <article className="flex flex-col gap-6 justify-between py-4">
+      <article className="flex flex-col gap-6 justify-between py-4 flex-1">
         <h1 className="text-3xl font-semibold font-sans text-slate-200">
           Salut à tous, moi c'est Mounir
         </h1>
@@ -33,7 +33,7 @@ function Hero({ profile }) {
         </div>
       </article>
       <img
-        className="h-80 rounded-full"
+        className="h-80 rounded-full mx-auto md:mx-0"
         src={`${import.meta.env.VITE_BACKEND_ASSETS}/${profile.image_url}`}
         alt="avatar"
       />

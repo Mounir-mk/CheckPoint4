@@ -9,14 +9,17 @@ function Project({ project }) {
       rel="noreferrer"
       className="flex flex-col gap-6 justify-between py-4 hover:animate-pulse hover:shadow-2xl transition duration-300 ease-in-out"
     >
-      <div className="flex bg-slate-800 rounded-xl p-5 gap-8 items-center">
+      <div className="flex flex-col md:flex-row bg-slate-800 rounded-xl p-5 gap-8 items-center">
         <img
           className="h-36 w-36 rounded-3xl"
           src={`${import.meta.env.VITE_BACKEND_ASSETS}/${project.thumbnail}`}
           alt="avatar"
         />
         <div>
-          <div id="project-name-tags" className="flex gap-6 items-center">
+          <div
+            id="project-name-tags"
+            className="flex flex-col md:flex-row gap-6 items-center"
+          >
             <h3 className="text-xl font-bold">{project.title}</h3>
             <TagList tags={project.tags} />
           </div>

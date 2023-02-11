@@ -4,7 +4,7 @@ import PostCard from "./PostCard";
 
 function PostSection({ posts }) {
   return (
-    <section id="posts" className="w-full">
+    <section id="posts" className="w-full my-6">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-semibold">Articles Récents</h1>
         <NavLink
@@ -14,7 +14,7 @@ function PostSection({ posts }) {
           Voir Tous les Postes
         </NavLink>
       </div>
-      <div className="w-full grid grid-cols-3 gap-8">
+      <div className="w-full grid grid-rows-3 md:grid-cols-3 md:grid-rows-1 gap-8">
         {posts
           .sort((a, b) => new Date(b.date_created) - new Date(a.date_created))
           .slice(0, 3)
